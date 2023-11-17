@@ -131,15 +131,23 @@ public class MorseTest {
                 .isEqualTo("THE PUG");
     }
 
-    // TODO: 17.11.2023 Ask PM how this should be handled
     @Test
-    @Disabled
-    void testMorseLettersSeperatedByTwoSpacesShould() {
+    void testMorseLettersSeperatedByTwoSpacesShouldBeValid() {
         String morse = "-  .";
 
         String translatedString = testedClass.fromMorse(morse);
 
         assertThat(translatedString)
                 .isEqualTo("TE");
+    }
+
+    @Test
+    void testMorseWordSeperatedByMoreThan3SpacesShouldBeValid() {
+        String morse = "- .... .         .--. ..- --.";
+
+        String translatedString = testedClass.fromMorse(morse);
+
+        assertThat(translatedString)
+                .isEqualTo("THE PUG");
     }
 }

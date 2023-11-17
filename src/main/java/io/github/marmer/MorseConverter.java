@@ -42,13 +42,13 @@ public class MorseConverter {
 
         if (morseString.isEmpty()) return "";
 
-        return Arrays.stream(morseString.split("   "))
+        return Arrays.stream(morseString.split(" {3,}"))
                 .map(this::morseToWord)
                 .collect(Collectors.joining(" "));
     }
 
     private String morseToWord(String morseWord) {
-        return Arrays.stream(morseWord.split(" "))
+        return Arrays.stream(morseWord.split(" {1,2}"))
                 .map(fromMorseDictionary::get)
                 .map(letter -> letter == null ? "?" : letter)
                 .collect(Collectors.joining());
